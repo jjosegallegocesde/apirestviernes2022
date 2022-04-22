@@ -12,6 +12,7 @@ export class Servidor{
     constructor(){
 
         this.app = express() //atributo app
+        this.llamarAuxiliares()
         this.enrutarPeticiones()
 
     }
@@ -26,10 +27,11 @@ export class Servidor{
     }
 
     enrutarPeticiones(){
+       this.app.use('/',rutas)  
+    }
 
-       this.app.use('/',rutas)
-        
-        
+    llamarAuxiliares(){
+        this.app.use(express.json())
     }
 
 

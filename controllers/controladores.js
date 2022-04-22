@@ -1,5 +1,3 @@
-
-
 export function buscarTodos(request,response){
 
     try{
