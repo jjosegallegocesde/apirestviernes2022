@@ -11,3 +11,7 @@ export let rutas=express.Router()
 
 //DEFINO MIS RUTAS
 rutas.get('/API/v1/viernes', buscarTodos)
+rutas.get('/API/v1/viernes/id', buscarTodos)
+rutas.post('/API/v1/viernes', buscarTodos)
+rutas.put('/API/v1/viernes/id', buscarTodos)
+rutas.delete('/API/v1/viernes/id', buscarTodos)
