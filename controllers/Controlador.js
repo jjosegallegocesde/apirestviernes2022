@@ -1,14 +1,18 @@
+//Importan los servicios
+import {ServicioHabitacion} from '../services/ServicioHabitacion.js'
+
 export class Controlador{
 
 
     constructor(){}
 
-    buscarTodos(request,response){
+    async buscarTodos(request,response){
+        let servicio=new ServicioHabitacion( )// Se instancia la clase SERVICIO
         try{
 
             response.status(200).json({
                 mensaje:"Exito en la bsuqueda",
-                data:[{nombre:"Juan",edad:32},{nombre:"Maria",edad:50}],
+                data:await servicio.buscarTodos(),
                 estado:true
             })
     
@@ -23,14 +27,15 @@ export class Controlador{
         }
     }
 
-    buscarPorId(request,response){
+    async buscarPorId(request,response){
         let id=request.params.id //CAPTURO EL ID QUE LLEGA POR LA URL
         console.log("El id solicitado es: "+id)
+        let servicio=new ServicioHabitacion( )// Se instancia la clase SERVICIO
         try{
 
             response.status(200).json({
                 mensaje:"Exito en la busqueda por id: "+id,
-                data:[{nombre:"Juan",edad:32}],
+                data:await servicio.buscarPorId(id),
                 estado:true
             })
     
@@ -45,11 +50,12 @@ export class Controlador{
         }
     }
 
-    insertar(request,response){
+    async insertar(request,response){
         let datosPeticion=request.body
         console.log(datosPeticion)
+        let servicio=new ServicioHabitacion( )// Se instancia la clase SERVICIO
         try{
-
+            await servicio.registrar(datosPeticion)
             response.status(200).json({
                 mensaje:"Exito registrando datos",
                 data:datosPeticion,
@@ -67,11 +73,12 @@ export class Controlador{
         }
     }
 
-    editar(request,response){
-        let id
-        let datosPeticion
+    async editar(request,response){
+        let id=request.params.id
+        let datosPeticion=request.body
+        let servicio=new ServicioHabitacion( )// Se instancia la clase SERVICIO
         try{
-
+            await servicio.editar(id,datosPeticion)
             response.status(200).json({
                 mensaje:"Exito editando datos",
                 data:null,
@@ -89,9 +96,13 @@ export class Controlador{
         }
     }
 
-    eliminar(request,response){
-        try{
 
+    async eliminar(request,response){
+        let id=request.params.id
+        let servicio=new ServicioHabitacion( )// Se instancia la clase SERVICIO
+
+        try{
+            await servicio.eliminar(id)
             response.status(200).json({
                 mensaje:"Exito eliminando datos",
                 data:null,
