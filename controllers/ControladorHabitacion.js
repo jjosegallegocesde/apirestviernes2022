@@ -1,8 +1,7 @@
 //Importan los servicios
 import {ServicioHabitacion} from '../services/ServicioHabitacion.js'
 
-export class Controlador{
-
+export class ControladorHabitacion{
 
     constructor(){}
 

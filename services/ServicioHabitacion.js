@@ -6,50 +6,26 @@ export class ServicioHabitacion{
     constructor(){}
 
     async buscarTodos(){
-        try{
-            let habitaciones=await modeloHabitacion.find()
-            return habitaciones
-
-        }catch(error){
-            console.log("upss "+error)
-        }
+        let habitaciones=await modeloHabitacion.find()
+        return habitaciones
     }
 
     async buscarPorId(id){
-        try{
-           let habitacion=await modeloHabitacion.findById(id)
-           return habitacion
-        }catch(error){
-            console.log("upss "+error)
-        }
+        let habitacion=await modeloHabitacion.findById(id)
+        return habitacion
     }
 
     async registrar(datosPeticion){
-        try{
-            let habitacionaRegistrar=new modeloHabitacion(datosPeticion)
-            return(await habitacionaRegistrar.save())
-
-        }catch(error){
-
-            console.log("upss "+error)
-
-        }
+        let habitacionaRegistrar=new modeloHabitacion(datosPeticion)
+        return(await habitacionaRegistrar.save())
     }
 
-    async editar(id,datosPeticion){
-        try{
-            return(await modeloHabitacion.findByIdAndUpdate(id,datosPeticion))
-        }catch(error){
-            console.log("upss "+error)
-        }
+    async editar(id,datosPeticion){ 
+        return(await modeloHabitacion.findByIdAndUpdate(id,datosPeticion))
     }
 
     async eliminar(id){
-        try{
-            return(await modeloHabitacion.findByIdAndDelete(id))
-        }catch(error){
-            console.log("upss "+error)
-        }
+        return(await modeloHabitacion.findByIdAndDelete(id))
     }
 
 }

@@ -2,9 +2,9 @@
 import express from 'express'
 
 //Importo los controladores
-import {Controlador} from '../controllers/Controlador.js'
+import {ControladorHabitacion} from '../controllers/ControladorHabitacion.js'
 //Creamos el objeto para poder utilizar la clase Controlador
-let controlador= new Controlador()
+let controlador= new ControladorHabitacion()
 
 
 //Una variable para almacenar
